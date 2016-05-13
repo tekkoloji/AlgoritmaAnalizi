@@ -6,13 +6,12 @@ def vezir(n):
     def forfonk(k):
         if(k==n):
             print dizi
-            #uygunluk fonksiyonu yazilacak
+            #uygunluk fonksiyonu
         else:
             k=k+1
             for i in range(1,n+1):
                 dizi[k-1]=i
-                forfonk(k)
-                
+                forfonk(k)                
     forfonk(k)
     
-vezir(5)
+vezir(4)
