@@ -1,6 +1,8 @@
 def vezir(n):
     k=0
-    dizi=[0,0,0,0]
+    dizi=[]
+    for s in range(0,n):
+        dizi.append(0)
     def forfonk(k):
         if(k==n):
             print dizi
@@ -13,5 +15,4 @@ def vezir(n):
                 
     forfonk(k)
     
-
-vezir(4)
+vezir(5)
