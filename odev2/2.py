@@ -1,3 +1,5 @@
+import itertools
+
 dosya=open("tablo1.txt", "r")
 #headerlar baslik dizisi icerisinde
 baslik=dosya.readline().split(",")
@@ -5,20 +7,40 @@ baslik=dosya.readline().split(",")
 veri=dosya.readlines(1)
 boyut=len(baslik)
 
-maks=0
-for j in range(0,boyut-1):
-    for i in range(j+1,boyut):
+for adet in range(1,boyut+1):
+    komb=list(itertools.combinations(range(0,boyut), adet))
+    maks=0
+    for eleman in komb:
         curmaks=0
         for satir in veri:
-            degerj=satir.split(",")[j].replace('\n','')
-            degeri=satir.split(",")[i].replace('\n','')
-            if(degerj=='1' and degeri=='1'):
+            durum=1
+            for indis in eleman:
+                deger=satir.split(",")[indis].replace('\n','')
+                if(deger=='0'):
+                    durum=0
+            if durum==1:
                 curmaks=curmaks+1
 
         if(curmaks>maks):
             maks=curmaks
-            indisi=i
-            indisj=j
+            indisler=eleman
+
+
+    urun=""
+    for i in indisler:
+        urun=urun+baslik[i].replace('\n','')
+
+    print("------- %s karsilastirma ------"%adet)
+    if(maks==0):
+        print ("%s adet urun icin maks bulunamadi"%adet)
+    else:
+        print ("%s urunleri %s kere satildi"%(urun,maks))
+    print("")
+    
+
+            
+
+
         
 
-print ("%s%s urunu %s kere satildi"%(baslik[indisj],baslik[indisi],maks))
+
