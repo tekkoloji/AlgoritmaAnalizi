@@ -9,6 +9,7 @@ boyut=len(baslik)
 
 for adet in range(1,boyut+1):
     komb=list(itertools.combinations(range(0,boyut), adet))
+    #for k in range(1,4):
     maks=0
     for eleman in komb:
         curmaks=0
@@ -28,7 +29,7 @@ for adet in range(1,boyut+1):
 
     urun=""
     for i in indisler:
-        urun=urun+baslik[i].replace('\n','')
+        urun=urun+baslik[i].replace('\n','')+" "
 
     print("------- %s karsilastirma ------"%adet)
     if(maks==0):
